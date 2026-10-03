@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create An Account</title>
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/register.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metrophobic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Beginning of Form section -->
+    <form class="register-form" action="#" method="post" id="registerForm">
+        <div class="sub-form">
+            <a class="logo" href="index.html">
+                <img src="/images/ChatGPT_Image_Sep_21__2026__07_19_44_PM-removebg-preview.png" alt="PayFlow Image">
+                <h2>Pay<span class="color">Flow</span></h2>
+            </a>
+
+            <div class="form-intro">
+                <h3>Create Your Account</h3>
+                <p>Let's get you started</p>
+            </div>
+
+            <div class="group">
+                <label for="fullname">Full Name</label>
+                <input id="fullname" name="fullname" type="text" placeholder="Enter your full name" autocomplete="name"
+                    required>
+            </div>
+            <div class="group">
+                <label for="email">Email Address</label>
+                <input id="email" name="email" type="email" placeholder="Enter your email address" autocomplete="email"
+                    required>
+            </div>
+            <div class="group">
+                <label for="phone">Phone Number</label>
+                <input id="phone" name="phone" type="tel" placeholder="e.g. +234 906 005 3402" autocomplete="tel"
+                    required>
+            </div>
+            <div class="group">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Create a password"
+                    autocomplete="new-password" required>
+            </div>
+            <div class="group">
+                <label for="confirmpassword">Confirm Password</label>
+                <input id="confirmpassword" name="confirmpassword" type="password" placeholder="Confirm your password"
+                    autocomplete="new-password" required>
+            </div>
+
+            <div class="terms">
+                <input id="terms" name="terms" type="checkbox" required>
+                <p>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy Policy</a></p>
+            </div>
+
+            <button class="submit-button" type="submit">Create Free Account</button>
+            <p class="sign-in">Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+    </form>
+    <!-- End of Form Section -->
+
+   <script type="module" src="/Javascript/register.js"></script>
+
+
+
+</body>
+
+</html>

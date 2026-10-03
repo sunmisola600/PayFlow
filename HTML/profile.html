@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <link rel="stylesheet" href="/CSS/profile.css">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900;family=Metrophobic&family=Montserrat:ital,wght@0,900;1,900;family=Open+Sans:ital,wght@0,300..800;1,300..800;family=Raleway:ital,wght@0,900;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <main class="dashboard-content" id="dashboard">
+            <header class="dashboard-header">
+                <div>
+                    <a href="dashboard.html" class="back-link"> ← Back to Dashboard</a>
+                    <h1>Profile</h1>
+                </div>
+            </header>
+
+            <section class="section">
+                <div class="panel" id="profilePanel">
+                    <div class="panel-heading">
+                        <h2>Account Information</h2>
+                    </div>
+                     <div class="profile-card" id="profileCard">
+
+                        <img class="avatar" id="profilePhoto" alt="Profile picture" hidden>
+                        <div class="avatar profile-initial" id="profileInitialCircle">p</div>
+                        <h3 id="displayName">PayFlow User</h3>
+                        <p><strong>Email:</strong> <span id="displayEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="displayPhone"></span></p>
+
+                    </div>
+
+                    <div class="profile-grid">
+                        <div class="profile-item">
+                            <label>Full Name</label>
+                            <input type="text" id="editName" placeholder="Enter your name">
+                        </div>
+
+                        <div class="profile-item">
+                            <label>Email</label>
+                            <input type="text" id="editEmail" readonly style="background: #f8fafc;">
+                        </div>
+
+                        <div class="profile-item">
+                            <label>Phone Number</label>
+                            <input type="text" id="editPhone" placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="profile-item">
+                            <label>Account Number</label>
+                            <input type="text" id="editAccountNumber" readonly style="background: #f8fafc;">
+                        </div>
+                    </div>
+
+                    <div class="money-buttons" style="justify-content: flex-start;">
+                        <button id="cancelProfile">Cancel</button>
+                        <button id="saveProfile" class="confirm-transfer-btn">Save Changes</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/Javascript/profile.js"></script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transfer Money</title>
+    <link rel="stylesheet" href="/CSS/transfer.css">
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metrophobic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+
+
+     <div class="transfer-container">
+
+        <!-- Header -->
+        <div class="transfer-header">
+            <a href="dashboard.html" class="back-link">
+                ← Back to Dashboard
+            </a>
+
+            <h1>Transfer Money</h1>
+
+            <p>
+                Send money securely to another PayFlow account.
+            </p>
+        </div>
+
+
+        <!-- Transfer Card -->
+        <div class="transfer-card">
+
+            <div class="card-icon">
+                →
+            </div>
+
+            <h2>Send Money</h2>
+
+            <p class="card-description">
+                Enter the recipient's account details and the amount you want to send.
+            </p>
+
+            <!-- Sender's wallet balance, filled from Firestore -->
+            <p class="balance-note" id="balanceNote">Your balance: ₦0.00</p>
+
+
+            <form id="transferForm">
+
+                <!-- Account Number -->
+                <div class="form-group">
+
+                    <label for="accountNumber">
+                        Recipient Account Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="accountNumber"
+                        placeholder="Enter 10-digit account number"
+                        maxlength="10"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Recipient Name (filled automatically from Firebase) -->
+                <div class="form-group">
+
+                    <label for="accountName">
+                        Recipient Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="accountName"
+                        placeholder="Enter the 10-digit account number first"
+                        readonly
+                    >
+
+                </div>
+
+
+                <!-- Amount -->
+                <div class="form-group">
+
+                    <label for="transferAmount">
+                        Amount
+                    </label>
+
+                    <div class="amount-input">
+
+                        <span>₦</span>
+
+                        <input
+                            type="number"
+                            id="transferAmount"
+                            placeholder="0.00"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Description -->
+                <div class="form-group">
+
+                    <label for="transferDescription">
+                        Description
+                        <span>(Optional)</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="transferDescription"
+                        placeholder="e.g. Food, rent, school fees"
+                    >
+
+                </div>
+
+
+                <!-- Send Button -->
+                <button
+                    type="submit"
+                    class="send-money-btn"
+                    id="sendMoneyBtn"
+                >
+                    Send Money
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <script type="module" src="/Javascript/transfer.js"></script>
+
+</body>
+</html>

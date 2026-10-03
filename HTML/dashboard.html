@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Metrophobic&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body class="has-mobile-menu">
+
+    <div class="dashboard-layout">
+
+       
+        <header class="mobile-header" id="mobileHeader">
+
+          
+            <div class="mobile-header-left">
+
+               
+                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu"
+                    aria-expanded="false">
+                    <span class="bars-icon"><i class="fa-solid fa-bars"></i></span>
+                    <span class="close-icon"><i class="fa-solid fa-xmark"></i></span>
+                </button>
+
+                <a class="mobile-logo" href="index.html" aria-label="PayFlow home">
+                    <img src="/images/Payflowlogo-removebg-preview.png" alt="">
+                    <span>Pay<span class="color">Flow</span></span>
+                </a>
+
+            </div>
+
+          
+            <div class="mobile-header-right">
+
+                <div class="theme-toggle" id="themeToggleMobile" title="Switch theme">
+                    <i class="fa-solid fa-moon"></i>
+                </div>
+
+                <div class="notification" title="Notifications">
+                    <i class="fa-regular fa-bell"></i>
+                    <span class="notification-dot"></span>
+                </div>
+
+                <div class="profile-image" id="profileInitialMobile">P</div>
+
+            </div>
+
+        </header>
+
+        
+        <div class="mobile-overlay" id="mobileOverlay"></div>
+
+       
+        <nav class="mobile-sidebar" id="mobileSidebar" aria-label="Mobile navigation">
+
+            <div class="sidebar-nav">
+                <a class="nav-item active" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="transfer.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left"></i><span>Transfer</span></a>
+                <a class="nav-item" href="transactions.html"><i
+                        class="fa-solid fa-receipt"></i><span>Transactions</span></a>
+                <a class="nav-item" href="savings.html"><i class="fa-solid fa-piggy-bank"></i><span>Savings</span></a>
+                <a class="nav-item" href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+            </div>
+
+            <div class="sidebar-bottom">
+                <a class="nav-item" href="#settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+                <a class="nav-item logout" href="index.html"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Log out</span></a>
+            </div>
+
+        </nav>
+
+        <aside class="sidebar">
+            <a class="logo" href="index.html" aria-label="PayFlow home">
+                <img src="/images/Payflowlogo-removebg-preview.png" alt="">
+                <h2>Pay<span class="color">Flow</span></h2>
+            </a>
+
+            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+                <a class="nav-item active" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="transfer.html"><i
+                        class="fa-solid fa-arrow-right-arrow-left"></i><span>Transfer</span></a>
+                <a class="nav-item" href="transactions.html"><i
+                        class="fa-solid fa-receipt"></i><span>Transactions</span></a>
+                <a class="nav-item" href="savings.html"><i class="fa-solid fa-piggy-bank"></i><span>Savings</span></a>
+                <a class="nav-item" href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a class="nav-item" href="#settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+                <a class="nav-item logout" href="index.html"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Log out</span></a>
+            </div>
+        </aside>
+
+        <main class="dashboard-content" id="dashboard">
+            <header class="dashboard-header">
+                <div class="welcome">
+                    <h1 id="welcomemessage"></h1>
+                    <p id="useremail" style="font-size: 12px;"></p>
+                    <p>Here is an overview of your PayFlow account.</p>
+                </div>
+                <div class="profile">
+                    <div class="theme-toggle" id="themeToggle">
+                        <i class="fa-solid fa-moon" id="themeIcon"></i>
+                    </div>
+                    <div class="notification">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="notification-dot"></span>
+                    </div>
+                    <div class="profile-image" id="profileInitial"></div>
+                    <span id="profileName"></span>
+
+                </div>
+
+
+
+            </header>
+            <section class="summary">
+                <div class=" card balance-card">
+                    <p>Wallet Balance</p>
+                    <h2 id="walletmoney">₦0.00</h2>
+                    <span>Available Balance</span>
+                </div>
+                <div class="card">
+                    <p>Total Income</p>
+                    <h2 id="totalIncome">₦0.00</h2>
+                    <span>This month</span>
+                </div>
+                <div class="card">
+                    <p>Total Expenses</p>
+                    <h2 id="totalExpenses">₦0.00</h2>
+                    <span>This month</span>
+                </div>
+                <div class="card">
+                    <p>Total Saving</p>
+                    <h2 id="totalSavings">₦0.00</h2>
+                    <span>This month</span>
+                </div>
+
+
+
+            </section>
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Quick Actions</h2>
+                </div>
+
+                <div class="quick-actions">
+                    <button class="action" id="addmoney">
+                        <div class="action-icon">+</div>
+                        <div>
+                            <h3>Fund Wallet</h3>
+                            <p>Add funds to your wallet</p>
+                        </div>
+
+                    </button>
+
+                    <button class="action" id="sendMoney">
+                        <div class="action-icon">→</div>
+                        <div>
+                            <h3>Send Money</h3>
+                            <p>Transfer money securely</p>
+                        </div>
+
+                    </button>
+
+
+                    <button class="action" id="addExpense">
+                        <div class="action-icon">+</div>
+                        <div>
+                            <h3>Add Expense</h3>
+                            <p>Record your spending</p>
+                        </div>
+
+                    </button>
+                    <button class="action" id="addSaving">
+                        <div class="action-icon">🎯</div>
+                        <div>
+                            <h3>Add Savings</h3>
+                            <p>Grow your savings goal</p>
+                        </div>
+
+                    </button>
+                </div>
+
+            </section>
+
+
+            <section class="dashboard-grid">
+                <div class="panel" id="recentTransactions">
+
+                    <div class="panel-heading">
+
+                        <h2>Recent Transactions</h2>
+                        <a href="transactions.html">View All</a>
+                    </div>
+
+                </div>
+                <div class="panel" id="savingsGoalsPanel">
+
+                    <div class="panel-heading">
+                        <h2>Savings Goals</h2>
+                        <a href="savings.html">View All</a>
+                    </div>
+
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <div class="money-modal" id="moneyModal">
+
+        <div class="money-box">
+
+            <h3>Add Money</h3>
+            <p>Enter the amount you want to add</p>
+            <input type="number" id="amountInput" placeholder="Enter amount">
+
+            <div class="money-buttons">
+                <button id="cancelMoney">Cancel</button>
+                <button id="confirmMoney">Add Money</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="send-money-modal" id="sendMoneyModal">
+
+        <div class="send-money-box">
+
+            <h2>Send Money</h2>
+
+            <p class="send-money-description">
+                Send money securely to another PayFlow user
+            </p>
+
+            <label for="accountNumber">Account Number</label>
+            <input type="text" id="accountNumber" placeholder="Enter account number">
+
+            <label for="accountName">Account Name</label>
+            <input type="text" id="accountName" placeholder="Recipient name" readonly>
+
+            <label for="transferAmount">Amount</label>
+
+            <div class="send-amount-input">
+                <span>₦</span>
+                <input type="number" id="transferAmount" placeholder="0.00">
+            </div>
+
+            <button class="confirm-transfer-btn" id="confirmTransfer">
+                Send Money
+            </button>
+
+            <button class="cancel-transfer-btn" id="cancelSendMoney">
+                Cancel
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="money-modal" id="expenseModal">
+        <div class="money-box">
+            <h3>Add Expense</h3>
+            <p>Enter how much you spent</p>
+            <input type="number" id="expenseAmount" placeholder="Enter amount">
+            <select id="expenseCategory">
+                <option value="Food">Food</option>
+                <option value="Transport">Transport</option>
+                <option value="Bills">Bills</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" id="expenseDescription" placeholder="Description (optional)">
+            <div class="money-buttons">
+                <button id="cancelExpense">Cancel</button>
+                <button id="confirmExpense">Add Expense</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="money-modal" id="savingModal">
+        <div class="money-box">
+            <h3>Add Saving</h3>
+            <p>Create or add to a savings goal</p>
+            <input type="text" id="savingGoal" placeholder="Goal name (e.g. Laptop)">
+            <input type="number" id="savingTarget" placeholder="Target amount">
+            <input type="number" id="savingAmount" placeholder="Amount to save">
+            <div class="money-buttons">
+                <button id="cancelSaving">Cancel</button>
+                <button id="confirmSaving">Add Saving</button>
+            </div>
+        </div>
+    </div>
+
+   <script type="module" src="/Javascript/dashboard.js"></script>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,232 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Google Sans", sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+
+/* Main Container */
+
+.transfer-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+
+/* Header */
+
+.transfer-header {
+    margin-bottom: 30px;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 25px;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+.transfer-header h1 {
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.transfer-header p {
+    color: #64748b;
+    font-size: 16px;
+}
+
+
+/* Transfer Card */
+
+.transfer-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Icon */
+
+.card-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #e4ecfd;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 25px;
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+.transfer-card h2 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.card-description {
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Sender's balance shown under the description */
+.balance-note {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2563eb;
+    background: #e4ecfd;
+    border-radius: 8px;
+    padding: 10px 12px;
+    margin-bottom: 22px;
+    margin-top: -14px;
+}
+
+
+/* Form */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group label span {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+
+/* Inputs */
+
+.form-group input {
+    width: 100%;
+    padding: 14px 15px;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 16px;
+
+    transition: 0.2s;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* The recipient name is filled by Firebase, so it cannot be typed */
+.form-group input[readonly] {
+    background: #f8fafc;
+    color: #475569;
+    cursor: default;
+}
+
+
+/* Naira Amount */
+
+.amount-input {
+    display: flex;
+    align-items: center;
+
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+
+    padding: 0 15px;
+}
+
+.amount-input:focus-within {
+    border-color: #2563eb;
+}
+
+.amount-input span {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.amount-input input {
+    border: none;
+    box-shadow: none;
+    padding-left: 10px;
+}
+
+.amount-input input:focus {
+    border: none;
+    box-shadow: none;
+}
+
+
+/* Button */
+
+.send-money-btn {
+    width: 100%;
+    padding: 15px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: #2563eb;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.send-money-btn:hover {
+    background: #1d4ed8;
+}
+
+/* Stops the button being pressed twice while the money is moving */
+.send-money-btn:disabled {
+    background: #93b4f5;
+    cursor: not-allowed;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .transfer-container {
+        padding: 25px 15px;
+    }
+
+    .transfer-card {
+        padding: 25px 20px;
+    }
+
+    .transfer-header h1 {
+        font-size: 27px;
+    }
+
+}

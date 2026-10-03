@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900;family=Metrophobic&family=Montserrat:ital,wght@0,100..900;1,100..900;family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,900;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+
+        <main class="dashboard-content" id="dashboard">
+            <header class="dashboard-header">
+                <div class="back">
+                    <div class="back">
+                        <a href="dashboard.html" class="back-link"> ← Back to Dashboard</a>
+                    </div>
+                    <h1>All Transactions</h1>
+                    <p id="useremail" style="font-size: 12px;"></p>
+                </div>
+            </header>
+
+            <section class="section">
+                <div class="section-heading">
+                    <h2>Transaction History</h2>
+                    <span id="transactionCount">0 transactions</span>
+                </div>
+
+                <div class="panel" id="transactionsList">
+                    <div class="panel-heading">
+                        <h2>Recent Transactions</h2>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="/Javascript/transaction.js"></script>
+
+
+
+</body>
+
+</html>

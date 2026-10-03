@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savings Goals - PayFlow</title>
+    <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
+    <link rel="stylesheet" href="/CSS/dashboard.css">
+    <link rel="stylesheet" href="/CSS/savings.css">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700;family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900;family=Metrophobic&family=Montserrat:ital,wght@0,100..900;1,100..900;family=Open+Sans:ital,wght@0,300..800;1,300..800;family=Raleway:ital,wght@0,900;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+        <aside class="sidebar">
+            <a class="logo" href="index.html" aria-label="PayFlow home">
+                <img src="/images/Payflowlogo-removebg-preview.png" alt="">
+                <h2>Pay<span class="color">Flow</span></h2>
+            </a>
+
+            <nav class="sidebar-nav" aria-label="Dashboard navigation">
+                <a class="nav-item" href="dashboard.html"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
+                <a class="nav-item" href="#wallet"><i class="fa-solid fa-wallet"></i><span>Wallet</span></a>
+                <a class="nav-item" href="#transfer"><i
+                        class="fa-solid fa-arrow-right-arrow-left"></i><span>Transfer</span></a>
+                <a class="nav-item" href="expenses.html"><i class="fa-solid fa-chart-pie"></i><span>Expenses</span></a>
+                <a class="nav-item" href="transactions.html"><i
+                        class="fa-solid fa-receipt"></i><span>Transactions</span></a>
+                <a class="nav-item active" href="savings.html"><i class="fa-solid fa-piggy-bank"></i><span>Savings</span></a>
+                <a class="nav-item" href="profile.html"><i class="fa-regular fa-user"></i><span>Profile</span></a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <a class="nav-item" href="#settings"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+                <a class="nav-item logout" href="index.html"><i
+                        class="fa-solid fa-arrow-right-from-bracket"></i><span>Log out</span></a>
+            </div>
+        </aside>
+
+        <main class="dashboard-content" id="dashboard">
+            <header class="dashboard-header">
+                <div>
+                    <h1>Savings Goals</h1>
+                    <p id="useremail" style="font-size: 12px;"></p>
+                </div>
+                <button id="addSavingBtn" style="background: #16a34a; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                    + Add New Goal
+                </button>
+            </header>
+
+            <section class="section">
+                <div class="section-heading">
+                    <h2>Your Goals</h2>
+                    <span id="totalSavingsSaved">₦0 saved</span>
+                </div>
+
+                <div class="panel" id="savingsGoalsList">
+                    <div class="panel-heading">
+                        <h2>Savings Goals</h2>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add/Edit Goal Modal -->
+    <div class="money-modal" id="goalModal">
+        <div class="money-box">
+            <h3>Add Saving</h3>
+            <p>Create a new savings goal or add to an existing one</p>
+            <input type="text" id="goalName" placeholder="Goal name (e.g. Laptop)">
+            <input type="number" id="goalTarget" placeholder="Target amount">
+            <input type="number" id="goalAmount" placeholder="Amount to add">
+            <div class="money-buttons">
+                <button id="cancelGoal">Cancel</button>
+                <button id="confirmGoal">Save</button>
+            </div>
+        </div>
+    </div>
+
+  <script type="module" src="/Javascript/saving.js"></script>
+
+
+
+</body>
+
+</html>

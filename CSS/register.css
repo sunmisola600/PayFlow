@@ -1,0 +1,136 @@
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    
+    padding: 48px 20px;
+    background: #f5f8ff;
+    color: #1f2937;
+     font-family: "Inter", sans-serif;
+}
+
+
+.register-form {
+    width: min(100%, 500px);
+    margin: auto;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(49, 95, 217, .12);
+}
+
+.sub-form { 
+    padding: 40px; 
+}
+
+
+.logo { 
+    display: flex; 
+    align-items: center;
+     margin-bottom: 34px; 
+     color: #4d19b6; 
+     text-decoration: none; 
+    }
+.logo img { 
+    width: 82px; 
+    margin-right: -17px; 
+}
+.logo h2 { 
+    font-size: 20px; 
+}
+.color { 
+    color: #9050f4; 
+}
+
+.form-intro { 
+    margin-bottom: 30px; 
+}
+.form-intro h3 { 
+    font-size: 25px; 
+}
+.form-intro p { 
+    margin-top: 7px; 
+    color: #727986; 
+    font-size: 15px; 
+}
+
+
+.group { 
+    margin-bottom: 18px; 
+}
+.group label { 
+    display: block;
+     margin-bottom: 8px; 
+     font-size: 14px; 
+     font-weight: 600; 
+    }
+.group input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #d7dce5;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+.group input:hover {
+    border-color: #a987ef;
+    background-color: #fcfaff;
+}
+.group input:focus { 
+    border-color: #6d25eb; 
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(109, 37, 235, .16);
+ }
+
+
+.terms { 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 9px; 
+    margin: 24px 0; 
+    color: #667085; 
+    font-size: 13px; 
+    line-height: 1.5;
+ }
+.terms input { 
+    margin-top: 3px; 
+    accent-color: #6d25eb; 
+}
+.terms a, .sign-in a { 
+    color: #5d23c7; 
+    font-weight: 600; 
+    text-decoration: none; 
+}
+
+.submit-button { 
+    width: 100%; 
+    padding: 14px; 
+    border: 0; 
+    border-radius: 9px; 
+   background: linear-gradient(135deg, #4B1F96, #7026BF 58%, #A432A4);
+    color: #fff; 
+    font-size: 15px; 
+    font-weight: 700; 
+    cursor: pointer; 
+}
+.submit-button:hover { 
+    background: linear-gradient(135deg, #6D28D9, #8B5CF6 58%, #D946EF);
+}
+.sign-in { 
+    margin-top: 20px; 
+    text-align: center; 
+    color: #667085; 
+    font-size: 14px; 
+}
+
+
+
+
+@media (max-width: 520px) {
+    body { padding: 24px 14px; }
+    .sub-form { padding: 30px 24px; }
+}
