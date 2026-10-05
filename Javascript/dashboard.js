@@ -78,6 +78,7 @@ onAuthStateChanged(auth, async (user) => {
         console.log("Current user:", currentUser.uid);
         console.log("User is logged in:", user.email);
         console.log("User UID:", user.uid);
+        
 
     } else {
         window.location.href = "login.html";
@@ -87,19 +88,76 @@ onAuthStateChanged(auth, async (user) => {
 
     try {
         const userRef = doc(db, "users", user.uid);
-        const userDocSnapShot = await getDoc(userRef);
-        const userData = userDocSnapShot.data();
+        let userDocSnapShot = await getDoc(userRef);
 
-        console.log(userData.userName);
-        console.log(userDocSnapShot.data());
+        // Some accounts (Google and Twitter sign-ins) have no user document yet,
+        // so create one now from the details Firebase Auth already has.
+        // user.displayName is the real name that Google and Twitter give us.
+        if (!userDocSnapShot.exists()) {
+            console.log("No user document found, creating one for", user.uid);
 
-        welcomemessage.innerHTML = `Good morning, ${userData.userName} 👋`
-        useremail.innerHTML = `${userData.userEmail}`
-        profileName.innerHTML = userData.userName;
+            await setDoc(userRef, {
+                uid: user.uid,
+                userName: user.displayName || emailName || "PayFlow User",
+                userEmail: user.email || "",
+                userphone: "",
+                imageUrl: user.photoURL || "",
+                role: "user",
+                createdAt: new Date(),
+                accountNumber: "1000" + Math.floor(100000 + Math.random() * 900000)
+            });
+
+            userDocSnapShot = await getDoc(userRef);
+        }
+
+        // Older documents may not have the Google name or picture saved yet
+        const savedData = userDocSnapShot.data() || {};
+
+        // Google does not always send a name, so use the part before the @ in the email
+        const emailName = user.email ? user.email.split("@")[0] : "";
+        const newName = user.displayName || emailName;
+
+        if (newName && !savedData.userName) {
+            await updateDoc(userRef, { userName: newName });
+        }
+
+        if (user.photoURL && !savedData.imageUrl) {
+            await updateDoc(userRef, { imageUrl: user.photoURL });
+        }
+
+        // Fallback values in case a field is empty
+        const userData = userDocSnapShot.data() || {};
+
+        // Work out the best name to show.
+        // 1. userName from the users document
+        // 2. the name Firebase Auth has (Google and Twitter send this)
+        // 3. the part before the @ in the email address
+        // 4. if there is no name anywhere, the greeting just says welcome
+        const realName = userData.userName || newName;
+        const userName = realName || "User";
+        const userMail = userData.userEmail || user.email;
+
+        console.log(userName);
+
+        if (realName) {
+            welcomemessage.innerHTML = `Good morning, ${realName} 👋`
+        } else {
+            welcomemessage.innerHTML = `Welcome to PayFlow 👋`
+        }
+
+        useremail.innerHTML = `${userMail}`
+        profileName.innerHTML = userName;
+
         // First letter of the name is shown on desktop AND on mobile
-        const userInitial = userData.userName.charAt(0).toUpperCase();
+        const userInitial = userName.charAt(0).toUpperCase();
         profileInitial.innerHTML = userInitial;
         document.getElementById("profileInitialMobile").innerHTML = userInitial;
+
+        // If there is a picture (for example the Google profile picture)
+        // we show it inside the avatar circles instead of the letter
+        if (userData.imageUrl) {
+            showProfilePicture(userData.imageUrl);
+        }
 
     } catch (error) {
         console.log(error.message);
@@ -112,22 +170,30 @@ onAuthStateChanged(auth, async (user) => {
 
     try {
         const walletRef = doc(db, "wallets", user.uid);
-        const walletSnapshot = await getDoc(walletRef);
 
+        // let, so we can give it a new value after creating the wallet below
+        let walletSnapshot = await getDoc(walletRef);
+
+        // This user has no wallet document yet, so create one with a zero balance
         if (!walletSnapshot.exists()) {
             await setDoc(walletRef, {
                 uid: user.uid,
                 balance: 0,
                 createdAt: new Date()
             });
-            const walletSnapshot = await getDoc(walletRef);
+
+            // Read the new wallet document. Without this the code below
+            // would still be looking at an empty result.
+            walletSnapshot = await getDoc(walletRef);
         }
 
 
-        const walletData = walletSnapshot.data();
-        console.log("Wallet balance:", walletData.balance);
+        const walletData = walletSnapshot.data() || { balance: 0 };
+        const balance = Number(walletData.balance) || 0;
 
-        walletmoney.innerHTML = `₦${walletData.balance.toLocaleString()}.00`;
+        console.log("Wallet balance:", balance);
+
+        walletmoney.innerHTML = `₦${balance.toLocaleString()}.00`;
 
         loadDashboardStats();
         loadRecentTransactions();
@@ -139,6 +205,34 @@ onAuthStateChanged(auth, async (user) => {
 
     }
 });
+/* Put the user's picture inside the two avatar circles (desktop and mobile).
+   If the picture cannot be loaded we simply keep showing the first letter. */
+function showProfilePicture(imageUrl) {
+    const picture = new Image();
+
+    picture.onload = function () {
+
+        // Desktop avatar
+        profileInitial.style.backgroundImage = "url('" + imageUrl + "')";
+        profileInitial.style.backgroundSize = "cover";
+        profileInitial.style.backgroundPosition = "center";
+        profileInitial.textContent = "";
+
+        // Mobile avatar
+        const mobileAvatar = document.getElementById("profileInitialMobile");
+        mobileAvatar.style.backgroundImage = "url('" + imageUrl + "')";
+        mobileAvatar.style.backgroundSize = "cover";
+        mobileAvatar.style.backgroundPosition = "center";
+        mobileAvatar.textContent = "";
+    };
+
+    picture.onerror = function () {
+        console.log("Profile picture could not be loaded, showing the initial instead.");
+    };
+
+    picture.src = imageUrl;
+}
+
 addmoney.addEventListener("click", () => {
 
     moneyModal.style.display = "flex";
@@ -208,8 +302,8 @@ confirmMoney.addEventListener("click", async () => {
 
     moneyModal.style.display = "none";
 
-    loadDashboardStats();
-    loadRecentTransactions();
+loadDashboardStats();
+        loadRecentTransactions();
 });
 
 
@@ -313,8 +407,8 @@ confirmExpense.addEventListener("click", async () => {
     expenseDescription.value = "";
     expenseModal.style.display = "none";
 
-    loadDashboardStats();
-    loadRecentTransactions();
+loadDashboardStats();
+        loadRecentTransactions();
 
     
 });
@@ -370,8 +464,8 @@ confirmSaving.addEventListener("click", async () => {
     savingAmount.value = "";
     savingModal.style.display = "none";
 
-    loadDashboardStats();
-    loadRecentTransactions();
+loadDashboardStats();
+        loadRecentTransactions();
     loadSavingsGoals();
 
     alert(`Saved ₦${amount.toLocaleString()} towards: ${goalName}!`);
@@ -463,8 +557,8 @@ confirmTransfer.addEventListener("click", async () => {
 
     sendMoneyModal.style.display = "none";
 
-    loadDashboardStats();
-    loadRecentTransactions();
+loadDashboardStats();
+        loadRecentTransactions();
 
     alert(`Successfully sent ₦${amount.toLocaleString()}!`);
 });

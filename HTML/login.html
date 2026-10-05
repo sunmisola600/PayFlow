@@ -105,8 +105,16 @@
                         <div class="form-input">
                             <i class="fa-solid fa-lock icon"></i>
                             <input id="password" name="password" type="password" placeholder="Enter your password"
-                                class="input" autocomplete="new-password" required>
+                                class="input" autocomplete="new-password" minlength="6" required>
+
+                            <!-- The eye button shows or hides the password -->
+                            <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+                                <i class="fa-solid fa-eye"></i>
+                            </button>
                         </div>
+
+                        <!-- Note under the password box -->
+                        <p class="password-hint">Password must be 6 characters or more.</p>
                     </div>
                     <div class="checkbox">
                         <div class="sub-check">
@@ -142,11 +150,7 @@
 
     </main>
 
-
-    <script type="module">
-       
-
-    </script>
+<script type="module" src="/Javascript/login.js"></script>
 
 </body>
 

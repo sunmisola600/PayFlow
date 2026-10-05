@@ -129,7 +129,11 @@ transferForm.addEventListener("submit", async (event) => {
         // Get the wallet of the person sending the money
         const senderWalletRef = doc(db, "wallets", currentUser.uid);
         const senderWalletSnapshot = await getDoc(senderWalletRef);
-        const senderBalance = senderWalletSnapshot.data().balance;
+
+        // A wallet with no balance yet means the balance is zero
+        const senderBalance = senderWalletSnapshot.exists()
+            ? Number(senderWalletSnapshot.data().balance) || 0
+            : 0;
 
         if (amount > senderBalance) {
             alert("Insufficient balance.");

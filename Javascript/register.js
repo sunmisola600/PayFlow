@@ -25,6 +25,31 @@
 
         const registerForm = document.getElementById('registerForm');
 
+        /* Show or hide a password box when its eye button is clicked.
+           The button starts as an open eye (fa-eye). While the password is
+           visible the icon changes to a crossed eye (fa-eye-slash), and
+           clicking it again hides the password. */
+        function setupPasswordToggle(buttonId, inputId) {
+            const button = document.getElementById(buttonId);
+            const input = document.getElementById(inputId);
+
+            button.addEventListener("click", function () {
+                if (input.type === "password") {
+                    // Show the password
+                    input.type = "text";
+                    button.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+                } else {
+                    // Hide the password again
+                    input.type = "password";
+                    button.innerHTML = '<i class="fa-solid fa-eye"></i>';
+                }
+            });
+        }
+
+        // Turn on the eye button for both password boxes
+        setupPasswordToggle("togglePassword", "password");
+        setupPasswordToggle("toggleConfirmPassword", "confirmpassword");
+
         registerForm.addEventListener("submit", (e) => {
             e.preventDefault()
             signUp()
@@ -38,6 +63,12 @@
             let userpassword = registerForm.password.value;
             let userconfirmpassword = registerForm.confirmpassword.value;
             let userphone = registerForm.phone.value;
+
+            // The password has to be at least 6 characters long
+            if (userpassword.length < 6) {
+                alert("Your password must be 6 characters or more.");
+                return;
+            }
 
             registerForm.fullname.value = "";
             registerForm.email.value = "";

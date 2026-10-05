@@ -72,14 +72,14 @@
             };
         
 
-        // Load and display all transactions for the user
-        async function loadAllTransactions(uid) {
-            // Fetch all transactions from Firestore
-            const snapshot = await getDocs(collection(db, "transactions"));
-            const allTransactions = snapshot.docs.map(doc => doc.data());
+// Load and display all transactions for the user
+async function loadAllTransactions(uid) {
+    // Fetch all transactions from Firestore
+    const snapshot = await getDocs(collection(db, "transactions"));
+    const allTransactions = snapshot.docs.map(doc => doc.data());
 
-            // Keep only the current user's transactions
-            const userTransactions = allTransactions.filter(t => t.uid === uid);
+    // Keep only the current user's transactions
+    const userTransactions = allTransactions.filter(t => t.uid === uid);
 
             // Sort newest first
             userTransactions.sort((a, b) => {

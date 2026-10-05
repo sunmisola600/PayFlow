@@ -87,6 +87,48 @@ body {
  }
 
 
+/* PASSWORD BOX WITH THE VIEW / HIDE ICON */
+
+.password-wrap {
+    position: relative;
+}
+
+/* Leaves space on the right for the eye button */
+.password-wrap input {
+    padding-right: 46px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: #6d25eb;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color .2s ease;
+}
+
+.toggle-password:hover {
+    background: #f1e9ff;
+}
+
+/* Small note under the password box */
+.password-hint {
+    margin-top: 7px;
+    font-size: 12px;
+    color: #727986;
+}
+
+
 .terms { 
     display: flex; 
     align-items: flex-start; 

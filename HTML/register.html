@@ -7,6 +7,7 @@
     <title>Create An Account</title>
     <link rel="shortcut icon" href="/images/Payflowlogo.webp" type="image/x-icon">
     <link rel="stylesheet" href="/CSS/register.css">
+    <script src="https://kit.fontawesome.com/02e460ae64.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -46,13 +47,32 @@
             </div>
             <div class="group">
                 <label for="password">Password</label>
-                <input id="password" name="password" type="password" placeholder="Create a password"
-                    autocomplete="new-password" required>
+
+                <!-- The eye button shows or hides the password -->
+                <div class="password-wrap">
+                    <input id="password" name="password" type="password" placeholder="Create a password"
+                        autocomplete="new-password" minlength="6" required>
+                    <button type="button" class="toggle-password" id="togglePassword" aria-label="Show password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+
+                <!-- Note under the password box -->
+                <p class="password-hint">Password must be 6 characters or more.</p>
             </div>
             <div class="group">
                 <label for="confirmpassword">Confirm Password</label>
-                <input id="confirmpassword" name="confirmpassword" type="password" placeholder="Confirm your password"
-                    autocomplete="new-password" required>
+
+                <div class="password-wrap">
+                    <input id="confirmpassword" name="confirmpassword" type="password"
+                        placeholder="Confirm your password" autocomplete="new-password" minlength="6" required>
+                    <button type="button" class="toggle-password" id="toggleConfirmPassword"
+                        aria-label="Show password">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                </div>
+
+                <p class="password-hint">Password must be 6 characters or more.</p>
             </div>
 
             <div class="terms">
